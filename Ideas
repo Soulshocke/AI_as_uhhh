@@ -1,0 +1,22 @@
+(1) Hunted become hunter
+    - AI as an equal contestant
+    - Come into contact with object during hide/run phase ---> update char behavior
+    - Or both (player and bot) could be deprived from the beginning like in PUBG
+    - Use Unity; A* for weapon search, behaviors trees for bot reaction based on player status
+    - Stealth-oriented
+    
+(2) Inventory Management
+    - AI as an assistant; gives advice on what to keep, drop, and produce
+    - Calculates priority or predicted need based on MCTS or current status
+    
+(3) Determines what (Overwatch) team is missing in terms of how to win
+
+(4) Have escortees learn player’s playstyle so they can avoid being a pain in the ass
+
+(5) Lazy landlord that simply gives tasks without any specifics to a town leader, who as the AI determines the amount of manpower and resources to get tasks done
+    - AI can also refuse tasks based on how much it is currently dealing with
+    
+(6) (Similar to above) AI as Guild Master, player as disgruntled questgiver
+     - AI determines who can take on what quests based on experience of a party as well as difficulty of quest
+
+
