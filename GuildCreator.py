@@ -14,7 +14,7 @@ class Member(object):
 
     #string representation
     def __str__(self):
-        to_string = "Name: %s \t Strength: %.1f \t Defense: %.1f \t Speed: %.1f" % (self.name, self.strength, self.defense, self.speed) 
+        to_string = "Name: %s \t Strength: %05.1f \t Defense: %05.1f \t Speed: %05.1f" % (self.name, self.strength, self.defense, self.speed) 
         return to_string
 
 """Function that actually generates the random members.
@@ -24,9 +24,9 @@ def generate():
     members = {}
     for i in range(1, guild_size + 1):
         player_name = "P" + str(i)
-        player_strength = (random.random() + .01) * 10
-        player_defense = (random.random() + .01) * 10
-        player_speed = (random.random() + .01) * 10
+        player_strength = (random.random() + .01) * 100
+        player_defense = (random.random() + .01) * 100
+        player_speed = (random.random() + .01) * 100
 
         members[player_name] = Member(player_name, player_strength, player_defense, player_speed)
     return members
