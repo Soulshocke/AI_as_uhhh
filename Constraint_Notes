@@ -1,0 +1,27 @@
+Constraint Notes:
+
+Player:{
+  name,
+  level,
+  attack,
+  defense,
+  speed,
+  type?
+  onQuest(add boolean)
+}
+
+Quests: {
+  #Title, 
+  Type(bounty, fetch, escort),
+  Difficultly,
+  ##EXPGain,
+  #Time(TurnBased: one quest per day),
+  maxPartySize,
+  ##Requirements,
+}
+
+Type/Difficulty: weight system:
+                  -Compare player level quest difficultly
+                  -Then compare stats to find party
+                  
+                  -later worry about EXP and Requirements
