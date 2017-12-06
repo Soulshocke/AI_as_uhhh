@@ -56,14 +56,15 @@ Description: Desired components and specifications will be explained top-down be
                      who is lvl100 should have 100 ATK, 100 DEF, and 100 SPD, which is 300 stat points in total.)
                      
                (c) Attack (ATK)
-                   > Determines combat capability and power.
+                   > Determines combat capability and power. (Just a description, nothing to code for.)
                
                (d) Defense (DEF)
                    > Determines both the endurance/armor of the individual, and how well they are able to tactically defend.
+                     (Just a description, nothing to code for.)
                
                (e) Speed (SPD)
                    > Determines how fast the individual can maneuver and work (such as for fetch quests), as well as how
-                     quick they can react in combat situations.
+                     quick they can react in combat situations. (Just a description, nothing to code for.)
                      
                (f) Class/Type (suggested but not prioritized; will leave blank for now)
                
