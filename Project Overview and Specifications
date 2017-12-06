@@ -1,0 +1,126 @@
+      
+      ***** AI as Guildmaster *****
+-----------------------------------------
+
+Description: Desired components and specifications will be explained top-down below, starting from the more high-level
+             components to be implemented (in no particular order), to the finer details concerning these components. 
+             
+
+(1) (High priority) Player/User
+    - Will be able to create and post a new quest (and only one) each day, using a pre-built quest-builder interface. 
+      This interface will provide options and customization for things such as:
+     
+               (a) Title (can be generic or user-defined)
+
+               (b) Type (bounty, fetch, or escort, each favoring specific stat specializations)
+                   > Bounty quests ----> ATK
+                   > Escort quests ----> DEF
+                   > Fetch quests  ----> SPD
+                   > Guild members that match a quest's stat preference will have a better weighted selection score, 
+                     increasing their probability of getting chosen for the quest party.
+
+               (c) Difficulty (tiers 1-5, where each tier requires a party member to be in a certain level range)
+                   > Tier 1 ----> Lvls 1-15
+                   > Tier 2 ----> Lvls 16-30
+                   > Tier 3 ----> Lvls 31-70
+                   > Tier 4 ----> Lvls 71-90
+                   > Tier 5 ----> Lvls 91-100 (where 100 is the max level)
+                   > These level ranges are absolute constraints; must be fulfilled before quest type is considered.
+                   > The above ranges are also tentative and thus may be changed at the dev team's discretion.
+
+               (d) EXPGain (suggested but not prioritized; will leave blank for now)
+               
+               (e) goldReward (suggested but not prioritized; will leave blank for now)
+
+               (f) Time (duration of quest; how long a party will be unavailable after accepting this quest)
+                   > Game runs on a day-by-day system, so perhaps quest length should also be in terms of days (which
+                     are practically turns), i.e. the current bounty quest will take 3 days to complete.
+
+               (g) maxPartySize (upper bound for total number of party members allowed to take on a quest)
+                   > Arbitrarily defined by player or automatic quest generator (if we'll have one at all.)
+
+               (h) Requirements (requests by the quest-giver for specific party members, party composition, classes, etc.)
+                   > Most likely an optional feature for the player.
+                 
+                 
+(2) (High priority) Guild member Class
+    - There is a Python class used to construct each potential party member belonging to the guild, all with their own
+      details such as:
+      
+               (a) Name (generic ID, or generated from a random name generator)
+               
+               (b) Level (reflects how capable and experienced the invdividual is)
+                   > To reflect balancing, must be somehow determined by the individual's stats as well.
+                     (What determines a member's level? Since the max level is currently 100, and the max stat is also
+                     100 for all 3 stats, should each level be representative of 3 stat points? For example, a member  
+                     who is lvl100 should have 100 ATK, 100 DEF, and 100 SPD, which is 300 stat points in total.)
+                     
+               (c) Attack (ATK)
+                   > Determines combat capability and power.
+               
+               (d) Defense (DEF)
+                   > Determines both the endurance/armor of the individual, and how well they are able to tactically defend.
+               
+               (e) Speed (SPD)
+                   > Determines how fast the individual can maneuver and work (such as for fetch quests), as well as how
+                     quick they can react in combat situations.
+                     
+               (f) Class/Type (suggested but not prioritized; will leave blank for now)
+               
+               (g) onQuest (boolean variable)
+                   > TRUE if individual is already away on a quest.
+                   > FALSE if individual is available and idle in the guild hall.
+                   
+                
+(3) (High priority) Optimization/Constraint Solver AI
+    - As of right now, will use a genetic algorithm with the help of one of many third-party solvers to build the 
+      most well-suited party composition for a particular quest posted on the guild's quest board. In this context,
+      the genetic "individual" is the party composition.
+      
+                (a) External solver (third-party Python package that does all the heavy-duty constraint logic)
+                    > CVX Solver
+                    > Z3 Constraints
+      
+                (b) Initial population (pool of randomized party compositions to be selected and improved upon)
+                    > Will not consider levels or stats at first. Completely random.
+                    
+                (c) maxGenerations (how many times total that pairs of party compositions will be selected, performed 
+                                    crossover on to generate new party compositions, and then mutated)
+                                    
+                (d) Selection (how pairs of party compositions will be chosen from a population of generated parties)
+                    > 
+                    
+                       
+                
+                                  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
