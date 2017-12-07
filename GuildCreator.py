@@ -1,5 +1,6 @@
 #GuildCreator.py 2.0.0
 import random
+import QuestCreator
 
 #just a random size for the guild; I picked 100
 guild_size = 100
@@ -98,7 +99,20 @@ def generate():
 
 """Defining main didn't actually work so I just wrote the 
 code on its own outside of any function"""
-#def main():  
+#def main():
+
+questBoard = {}
 guild = generate()
+
+#Print all generated Guild members
 for member in guild:
     print(str(guild[member]))
+
+#Prompt user to create a quest object, add it to questBoard
+title, _type, diff, size = QuestCreator.create_quest()
+questBoard[title] = QuestCreator.Quest(title, _type, diff, size)
+
+#Print all quests on questBoard
+for post in questBoard:
+    print(questBoard[post])
+
