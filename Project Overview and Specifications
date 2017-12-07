@@ -91,7 +91,18 @@ Description: Desired components and specifications will be explained top-down be
                                     crossover on to generate new party compositions, and then mutated)
                                     
                 (d) Selection (how pairs of party compositions will be chosen from a population of generated parties)
-                    > 
+                    > Tournament selection just because it sounds fun.
+                    > However, we want to quickly narrow down guild members to choose from, and that's where the 
+                      constraint solving comes in.
+                
+                (e) Crossover (for each pair selected, cross the guild members with the more favorable stats and 
+                               generate a better party composition)
+                
+                (f) Mutation (deliberately change a newly generated party composition)
+                    > Perhaps, switch one or two of the party members with those that are currently not in the same
+                      party but are available.
+                      
+                 
                     
                        
                 
