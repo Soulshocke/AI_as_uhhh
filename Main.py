@@ -11,15 +11,15 @@ def PartySuccess(Party,Quest):
     SucessRate = 0
     #Finds avg Atk stat
     for member in Party:
-        Atk_avg = member.attack
+        Atk_avg += Party[member].attack
     Atk_avg = Atk_avg/len(Party)
     #Finds avg Def stat
     for member in Party:
-        Def_avg = member.defense
+        Def_avg += Party[member].defense
     Def_avg = Def_avg/len(Party)
     #Finds avg Speed stat
     for member in Party:
-        Speed_avg = member.speed
+        Speed_avg += Party[member].speed
     Speed_avg = Speed_avg/len(Party)
     '''
     Bounty: atk, spd, def
@@ -30,27 +30,27 @@ def PartySuccess(Party,Quest):
        Def_avg = Def_avg/2
        Speed_avg = Speed_avg/3
        PartyPoints = Atk_avg + Def_avg + Speed_avg
-       SucessRate = PartyPoints/Quest.Diff
+       SucessRate = (PartyPoints/Quest.diff)*100
        return SucessRate
     
     if Quest._type is "escort":
        Atk_avg = Atk_avg/2
        Speed_avg = Speed_avg/3
        PartyPoints = Atk_avg + Def_avg + Speed_avg
-       SucessRate = PartyPoints/Quest.Diff
+       SucessRate = (PartyPoints/Quest.diff)*100
        return SucessRate
     
     if Quest._type is "fetch":
        Atk_avg = Atk_avg/2
        Def_avg =Def_avg/3
        PartyPoints = Atk_avg + Def_avg + Speed_avg
-       SucessRate = PartyPoints/Quest.Diff
+       SucessRate = (PartyPoints/Quest.diff)*100
        return SucessRate
 
 #Determines whether or not the Party passes the quests   
 def PassOrFail(Rate):
     Pass_Or_Fail = "failed"
-    if int(random.random()*100)<=Rate:
+    if (random.random()*100)<=Rate:
        Pass_Or_Fail = "passed"
     return Pass_Or_Fail
 
@@ -112,23 +112,29 @@ while UserInput != 5:
           print("I will now send the best people for your quest")
           #AI is called here
           #Report of who is sent
-          
+          '''
+          #Test Party
+          Quest1_Party['ayy'] = GuildCreator.Member('ayy', 12, 6, 3, 15)
+          Quest1_Party['lmao'] = GuildCreator.Member('lmao', 14,7, 1, 20)
+          Quest1_Party['mom'] = GuildCreator.Member('mom', 16,8, 2, 22)
+          Quest1_Party['fam'] = GuildCreator.Member('fam', 18,6, 2, 28)
+          '''
           DayCount += 1
           ActiveQuest = 0
           print("############################################################")
           print("Day %d" % DayCount)
           print("Welcome back Traveler")
-          
           #Goes through each quest in the Board and return the status
           for Quest in questBoard:
-              SuccessRate = PartySucess(Quest1_Party,Quest)
+              SuccessRate = PartySuccess(Quest1_Party,questBoard[Quest])
               QuestStatus = PassOrFail(SuccessRate)
               print("I sent the party consisting of:")
               for member in Quest1_Party:
-                  print(str(Quest1Party[member]))
-              print("to take on the quest %s", Quest.title)
-              print("They %s with a SuccessRate of %d %",QuestStatus,SucessRate)
+                  print(str(Quest1_Party[member]))
+              print("to take on the quest ", questBoard[Quest].title)
+              print("They ",QuestStatus," with a SuccessRate of",SuccessRate,"%")
           #Clears QuestBoard
+          Quest1_Party = {}
           questBoard = {}
        else:
          print("The day can't end Traveler if we have no Quests on the Board")  
