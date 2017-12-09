@@ -1,5 +1,5 @@
 #QuestCreator.py
-#Contians quest object and funciton create_quest that will prompt user to
+#Contains quest object and funciton create_quest that will prompt user to
 #create a quest with a defining title, type, difficulty, and max Party Size
 
 import random
@@ -28,7 +28,7 @@ def create_quest():
 	quest = []
 
 	#Set Type
-	print("What type of quest would you like to create? (Bounty, Escort, Fetch)")
+	print("What type of quest would you like to create? (Bounty, Escort, Fetch) \n")
 	_type = input()
 	while (True): 		#Ensures specific type is picked
 		if _type.lower() == "bounty":
@@ -45,34 +45,35 @@ def create_quest():
 
 	#Set Difficulty
 	
-	print("Would you like set a custom level? y/n")
+	print("\nWould you like set a custom level? y/n\n")
 	final = input()
 	while(True):			#Ensures User types a correct name
 		if final.lower() == "y":
-			print("Please specify what level you would like your quest to be, 1 being easy and 100 being hell.")
+			print("\nPlease specify what level you would like your quest to be, 1 being easy and 100 being hell.\n")
 			diff_in = input()
 			diff = int(diff_in)
 			while(diff > 100 or diff < 1):		#Ensures legal difficulty level
-				print("Please pick a number between 1 - 100")
+				print("\nPlease pick a number between 1 - 100\n")
 				diff_in = input()
 				diff = int(diff_in)
 			break
 		elif final.lower() == "n":
-			print("Select a general difficulty level: 1 being easy and 5 being hell")
+			print("\nSelect a general difficulty level: 1 being easy and 5 being hell\n")
 			diff_in = input()
 			diff = int(diff_in)
 			while(diff > 5 or diff < 1):		#Ensures legal difficulty level
-				print("Please pick a number between 1 - 5")
+				print("\nPlease pick a number between 1 - 5\n")
 				diff_in = input()
 				diff = int(diff_in)
 			diff = random.randrange((diff - 1) * 20, diff * 20)
 			break
 		else:
-			print("Invalid input. Type y or n.")
+			print("\nInvalid input. Type y or n.\n")
+			# Try to restart the difficulty selection; atm this is an infinite loop
 
 
 	#Set Max Input Size
-	print("What will be the Max party size for this quest? (Limit to how many people can go on the quest, limit 10)")
+	print("\nWhat will be the Max party size for this quest? (You can choose up to 10.)\n")
 	size_in = input()
 	size = int(size_in)
 	while(size < 1 or size > 10):		#Ensures legal party size
@@ -81,18 +82,18 @@ def create_quest():
 		size = int(size_in)
 
 	#Set Title
-	print("What would you like to name your quest?")
+	print("\nWhat would you like to name your quest?\n")
 	title = input()
 	while(True):			#Ensures User types a correct name
-		print("%s, is that right? y/n" % (title))
+		print("\n%s, is that right? y/n \n" % (title))
 		final = input()
 		if final.lower() == "y":
 			break
 		elif final.lower() == "n":
-			print("What would you like to name your quest?")
+			print("\nWhat would you like to name your quest?\n")
 			title = input()
 		else:
-			print("Invalid input. Type y or n.")
+			print("\nInvalid input. Type y or n.\n")
 
 	#Append features to quest array
 	quest.append(title)

@@ -30,15 +30,12 @@ Using random numbers, we are going to randomly
 select whether a player will be an attacker, defender,
 or runner then from there the stat that corresponds with 
 the specialty will take up between 60 - 80% of the stat points.
-
 Attacker --> attack
 Defender --> Defense 
 Runner --> Speed
-
 The secondary stat can either be picked randomly or not. For now
 I have decided to pick it myself:
 Attacker: More inclined to have better speed stat for faster strikes as opposed to more defense
-
 Defender: More inclined to have better attack in case enemy gets too close. Logically it makes sence 
 because defenders wear heavy armor anyways so speed makes no sense
 Runners: Prefer attack since they are really squishy, thee is a better chance of survival 
@@ -97,22 +94,21 @@ def generate():
         members[player_name] = Member(player_name, player_level, attack, defense, speed)
     return members
 
-"""Defining main didn't actually work so I just wrote the 
-code on its own outside of any function"""
-#def main():
 
-questBoard = {}
-guild = generate()
+# To test this file
+if __name__ == "__main__":
 
-#Print all generated Guild members
-for member in guild:
-    print(str(guild[member]))
+    # questBoard = {}
+    # guild = generate()
 
-#Prompt user to create a quest object, add it to questBoard
-title, _type, diff, size = QuestCreator.create_quest()
-questBoard[title] = QuestCreator.Quest(title, _type, diff, size)
+    # #Print all generated Guild members
+    # for member in guild:
+    #     print(str(guild[member]))
 
-#Print all quests on questBoard
-for post in questBoard:
-    print(questBoard[post])
+    # #Prompt user to create a quest object, add it to questBoard
+    # title, _type, diff, size = QuestCreator.create_quest()
+    # questBoard[title] = QuestCreator.Quest(title, _type, diff, size)
 
+    # #Print all quests on questBoard
+    # for post in questBoard:
+    #     print(questBoard[post])
