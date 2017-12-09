@@ -2,6 +2,8 @@
 #Contians quest object and funciton create_quest that will prompt user to
 #create a quest with a defining title, type, difficulty, and max Party Size
 
+import random
+
 #Quest object
 class Quest(object):
 
@@ -42,20 +44,39 @@ def create_quest():
 		_type = input()
 
 	#Set Difficulty
-	print("Select a difficulty, easy(1) to difficult(100)")
-	diff_in = input()
-	diff = int(diff_in)
-	while(diff > 100 or diff < 1):		#Ensures legal difficulty level
-		print("Please pick a number between 1 - 100")
-		diff_in = input()
-		diff = int(diff_in)
+	
+	print("Would you like set a custom level? y/n")
+	final = input()
+	while(True):			#Ensures User types a correct name
+		if final.lower() == "y":
+			print("Please specify what level you would like your quest to be, 1 being easy and 100 being hell.")
+			diff_in = input()
+			diff = int(diff_in)
+			while(diff > 100 or diff < 1):		#Ensures legal difficulty level
+				print("Please pick a number between 1 - 100")
+				diff_in = input()
+				diff = int(diff_in)
+			break
+		elif final.lower() == "n":
+			print("Select a general difficulty level: 1 being easy and 5 being hell")
+			diff_in = input()
+			diff = int(diff_in)
+			while(diff > 5 or diff < 1):		#Ensures legal difficulty level
+				print("Please pick a number between 1 - 5")
+				diff_in = input()
+				diff = int(diff_in)
+			diff = random.randrange((diff - 1) * 20, diff * 20)
+			break
+		else:
+			print("Invalid input. Type y or n.")
+
 
 	#Set Max Input Size
-	print("What will be the Max party size for this quest? (Limit to how many people can go on the quest)")
+	print("What will be the Max party size for this quest? (Limit to how many people can go on the quest, limit 10)")
 	size_in = input()
 	size = int(size_in)
-	while(size < 1):		#Ensures legal party size
-		print("Please pick a value greater than 0")
+	while(size < 1 or size > 10):		#Ensures legal party size
+		print("Please pick a value between 1 - 10")
 		size_in = input()
 		size = int(size_in)
 
@@ -68,8 +89,8 @@ def create_quest():
 		if final.lower() == "y":
 			break
 		elif final.lower() == "n":
-			print("What would you liek to name your quest?")
-			final = input()
+			print("What would you like to name your quest?")
+			title = input()
 		else:
 			print("Invalid input. Type y or n.")
 
