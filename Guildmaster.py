@@ -16,12 +16,14 @@ from random import randint, random, choice
 def individual(guild, quest):
     new_party = {}
     party_max = quest.size
+    print(quest.diff)
+
 
     # randomly choose party size and hope the members are good enough
     party_size = randint(1, party_max)   
     print("\nThe party size will be: ", party_size)
 
-    # randomly assign a guild member to the party
+    # randomly assign a guild member to the party2
     for x in range(party_size):
         some_member = choice(list(guild))
         # print(str(guild[some_member]))
@@ -31,9 +33,9 @@ def individual(guild, quest):
 
 
 # *** Generates a list-type population of party compositions
-# def population(count, ):
+def population(count, ):
 
-#     return 
+    return 
 
 
 # *** Determines the success rate (AKA fitness) of a party for a certain quest
@@ -108,19 +110,21 @@ def fitness(party, quest):
 # *** Main function 
 if __name__ == "__main__":
 
-    # Builds the guild with random guild members of varying stats
-    # guild = GuildCreator.generate()
-    # for member in Main.guild:
-    #     print(str(Main.guild[member]))
-    print('\n')
+  population = 100
 
-    # Creates the quest for which a party will be assembled for
-    # title, _type, diff, size = QuestCreator.create_quest()
-    # questBoard[title] = QuestCreator.Quest(title, _type, diff, size)
-    # for post in questBoard:
-    #     print(questBoard[post])
+  # Builds the guild with random guild members of varying stats
+  guild = GuildCreator.generate()
+  for member in Main.guild:
+      print(str(Main.guild[member]))
+  # print('\n')
 
-    # Runs the genetic algorithm until a suitable party is made for each quest
-    # for quest in questBoard:
-    #     final_gen = sorted(evolve(guild, questBoard[quest]), key=Individual.fitness, reverse=True)
-    #     best_party = final_gen[0]
+  # Creates the quest for which a party will be assembled for
+  # title, _type, diff, size = QuestCreator.create_quest()
+  # questBoard[title] = QuestCreator.Quest(title, _type, diff, size)
+  # for post in questBoard:
+  #     print(questBoard[post])
+
+  # Runs the genetic algorithm until a suitable party is made for each quest
+  # for quest in questBoard:
+  #     final_gen = sorted(evolve(guild, questBoard[quest]), key=Individual.fitness, reverse=True)
+  #     best_party = final_gen[0]

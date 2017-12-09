@@ -12,7 +12,6 @@ def PassOrFail(Rate):
     return Pass_Or_Fail
 
 
-
 guild = GuildCreator.generate()
 DayCount = 0
 UserInput = 0
@@ -24,6 +23,50 @@ SuccessRate = 0
 print("############################################################")
 print("Welcome Traveler. I am the GuildMaster of this here Guild")
 print("My Name is A.I.")
+print("NMMMMMMMMMMMMMMMMMMNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n\
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n\
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n\
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n\
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNNNmmNmNNmNNNNNNNNmmmmmmmmmmmmmmmmNNNNMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n\
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMNNmddhhhhyyysssyyyyyyyyyyyyyyyyyyhhhhhhdddmmNNMMMMMMMMMMMMMMMMMMMMMMMMM\n\
+MMMMMMMMMMMMMMMMMMMMMMMMMNNmddhyysssoo++////////+++++++ooooooooooosssyyhhdmmNNMMMMMMMMMMMMMMMMMMMMMM\n\
+MMMMMMMMMMMMMMMMMMMMMMMMNmdhysoo++///::---.......--::::::::/:://////++ossyyhhhddmmNMMMMMMMMMMMMMMMMM\n\
+MMMMMMMMMMMMMMMMMMMMMMNNdyyo++:::----....``````.-.....-----::-://////////ooooosyyhmMMMMMMMMMMMMMMMMM\n\
+MMMMMMMMMMMMMMMMMMMmhsso+/:::/:-:-:--.....``...`````..-..-:/+++o++++++o+++++///++odMMMMMMMMMMMMMMMMM\n\
+MMMMMMMMMMMMMMMMMMNyo/+////+/o+oo++++/:--....``````.....--::::-::-----:://+++////oyNMMMMMMMMMMMMMMMM\n\
+MMMMMMMMMMMMMMMMMMdo/::/+o+++//+/:::/::---.````````............`.````.....-:://:/+smMMMMMMMMMMMMMMMM\n\
+MMMMMMMMMMMMMMMMMMh+::+//::-:----..`.....````````....-......````.```````.....-://+smMMMMMMMMMMMMMMMM\n\
+MMMMMMMMMMMMMMMMMMh+::::-..-:....```.-.``...`````........```````.:/+++/.``...--:/oymMMMMMMMMMMMMMMMM\n\
+MMMMMMMMMMMMMMMMMN+:-----.-/++ssso+oo+--...```````......```.:/+///:+soo/:/oo/---:ohNMMMMMMMMMMMMMMMM\n\
+MMMMMMMMMMMMMMMMMN+-:--/oo+:+yhyyyso//sh/.````````......-/yhs/-:oyddmmms-`.:so--:+hNMMMMMMMMMMMMMMMM\n\
+MMMMMMMMMMMMMMMMMmo:-+hs-`.smNMMMMMNmy--/::.``````...-:sddo.``omNMMMMMMMNs..:/-::+hNMMMMMMMMMMMMMMMM\n\
+MMMMMMMMMMMMMMMMMdo:-yy:.-yNMMMMNNMMMNh-.+y/.````...:yNm/:-.`/mNMMNmMMMMMNy:::-::+dNMMMMMMMMMMMMMMMM\n\
+MMMMMMMMMMMMMMMMMmo::sh+::dNMMM   MMMNm:`.:+-.`.`..:yds+:-.``+NMMMM   MMMNh+//-::+dNMMMMMMMMMMMMMMMM\n\
+MMMMMMMMMMMMMMMMMms:-+dyo/yNMMMMMMMMNdo-.-+y+.`.```:ydhyo/-``.sdNNMMMMMMNh++os-::odNMMMMMMMMMMMMMMMM\n\
+MMMMMMMMMMMMMMMMMdo/::ohdyssmNNMMNNmdoosydddo-.```..-/shmdyo/::sdmNNNNNms/+sdd:-:oyNMMMMMMMMMMMMMMMM\n\
+MMMMMMMMMMMMMMMMMdo::-:+ydmddmNmmmddddmmdhs/--.```.....-/shmmmmmdmmmmNmyyhmmmy:-:+smNMMMMMMMMMMMMMMM\n\
+NMMMMMMMMMMMMMMMMdo+-..-::oyyshhhyyso/:::-:-::-```.--.--::::+shhhhhhdddhyyys+:--:+odNMMMMMMMMMMMMMMM\n\
+NMMMMMMMMMMMMMMMMdo+-......-...---.......-:::::-.`.-----:::------..-//----...-.-:/+hmMMMMMMMMMMMMMMM\n\
+NMMMMMMMMMMMMMMMMho/..-...............-----::::--.----::-::--....``............-/:+yhmMMMMMMMMMMMMMM\n\
+NMMMMMMMMMMMMMMMMdo:--........`........----:::--...-::::://::-.............-.---::+ysdNMMMMMMMMMMMMM\n\
+NMMMMMMMMMMMMMMMMms/:.........`.........--::/::----::///++//:...........--.-.--::/+oshmMMMMMMMMMMMMM\n\
+NMMMMMMMMMMMMMMMMNs+:--........-........-:/o+///++++ooooso+/----.........------::/++shmMMMMMMMMMMMMM\n\
+NNNMMMMMMMMMMMMMMNy+:---.......---..-...---::/+oossssssyo+//::---........-------:/:+yhmMMMMMMMMMMMMM\n\
+NNNNMMMMMMMMMMMMMMh+/:---......---..-...-----:://+++///://:::-----.......----::-://+yymMMMMMMMMMMMMM\n\
+NMNNNMMMMMMMMMMMMMmo//:----..---..---------::-::----::://::::--------------:::::///osyNMMMMMMMMMMMMM\n\
+mNNNNMMMMMMMMMMMMMMh+/:-------:-..-----/oossoooo+++osyyyyoo+/::--.---------:::::///sshNMMMMMMMMMMMMM\n\
+mNNmmNMMMMMMMMMMMMMNs/:::----:--.+yyhsyyyydo-.:hs:-+dmdydNmmmNdhs+:------:::::::++oysdMMMMMMMMMMMMMM\n\
+dmNmmmNMMMMMMMMMMMMMd+:::-:-::--/dNmd+/:-:/.`.-+:``.so:-/ysohMMMMMNs:--::::::///+ooyhNMMMMMMMMMMMMMM\n\
+dmmmmmdmNMMMMMMMMMMMNh///:::/:-::+mmmh+:---..-:+:...s+-::yssmMMMMMNd:-:::::////+ooyhNMMMMMMMMMMMMMMM\n\
+dmmmmddmmNMMMMMMMMMMMNy////:::::::smNMNNmdmmmmmNmddmNNmmNMMMMMMMNmd+::::://///+ssyhNMMMMMMMMMMMMMMMM\n\
+ddmmddddmmmNMMMMMMMMMMNs+////::::::+ohmmhssoodyymmhddhhmmdNMMMMNms+::://///++ossydNMMMMMMMMMMMMMMMMM\n\
+dmmmmddddmddNMMMMMMMMMMMdo+/////::::::/ydmdhhhyyhyosyooyhydmmdyhy/:::///+++ooyyhmMMMMMMMMMMMMMMMMMMM\n\
+dddmmmddddmddmNMMMMMMMMMMmyo++++////:::::/ooyhyssyyyyhhhhyo+/::::::://++ooosyhmMMMMMMMMMMMMMMMMMMMMM\n\
+ddmmmdddddmmdddmNNNMMNNNNNms+//+/////////:::::::////////:/::://////+++oossyyhdNMMMMMMMMMMMMMMMMMMMMM\n\
+hddddddhddddhhddmmmmmmNNNNmds//////:://///////////////////+//+++++oosoossyyyymMMMMMMMMMMMMMMMMMMMMMM\n\
+ddddddddddhdhhhdhdddmmmmNNNNmh+///////////+++++++/+////++++++ooossssyyyyyyyhmNNmNMMMMMMMMMMMMMMMMMMM\n\
+hddhddmmdddddmdddhhdmmmmmNNNNdhs++/+syssoooooo+o++++++ooooossyysyyyhdddddhhmmmmmNMMMMMMMMMMMMMMMMMMM\n")
+
 print("Day %d" % DayCount)
 
 while UserInput != 5:

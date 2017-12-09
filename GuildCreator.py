@@ -13,9 +13,10 @@ objects as strings"""
 class Member(object):
 
     #Constructor
-    def __init__(self, name, level, attack, defense, speed):
+    def __init__(self, name, level, _type, attack, defense, speed):
         self.name = name
         self.level = level
+        self.type = _type
         self.attack = attack
         self.defense = defense
         self.speed = speed
@@ -53,28 +54,29 @@ def set_skills(level):
 
     #randomly generated number will determine what 
     #the player will specialize in
+    # *** [Debug note] Switched randrange with randint ***
     if random_num <= .33:
         player_type = "Attacker"
-        attack_percentage = random.randrange(60, 81) / 100
+        attack_percentage = random.randint(60, 80) / 100
         attack = int(skill_points * attack_percentage)
 
-        speed = random.randrange(1, skill_points - attack)
+        speed = random.randint(1, skill_points - attack)
         defense = skill_points - attack - speed
 
     elif random_num > .33 and random_num <= .66:
         player_type = "Defender"
-        defense_percentage = random.randrange(60, 81) / 100
+        defense_percentage = random.randint(60, 80) / 100
         defense = int(skill_points * defense_percentage)
 
-        attack = random.randrange(1, skill_points - defense)
+        attack = random.randint(1, skill_points - defense)
         speed = skill_points - attack - defense
 
     else:
         player_type = "Runner"
-        speed_percentage = random.randrange(60, 81) / 100
+        speed_percentage = random.randint(60, 80) / 100
         speed = int(skill_points * speed_percentage)
 
-        attack = random.randrange(1, skill_points - speed)
+        attack = random.randint(1, skill_points - speed)
         defense = skill_points - attack - speed
     
     stats.append(player_type)
@@ -85,12 +87,16 @@ def set_skills(level):
     return stats 
 
 #Generate just creates the entire guild using set_skills()
+# *** [Debug note] Switched randrange with randint ***
 def generate():
     members = {}
     for i in range(1, guild_size + 1):
         player_name = "P" + str(i)
-        player_level = random.randrange(1,51) #50 is max level for this
+        player_level = random.randint(5,50) #50 is max level for this
         player_type, attack, defense, speed = set_skills(player_level)
+        # print("i = {0}: " .format(i))
+        # print("         {0}, {1}, {2}, {3}" \
+        #     .format(player_type, attack, defense, speed))
 
         members[player_name] = Member(player_name, player_level, player_type, attack, defense, speed)
     return members
@@ -98,17 +104,17 @@ def generate():
 # To test this file
 if __name__ == "__main__":
 
-    # questBoard = {}
-    # guild = generate()
+    questBoard = {}
+    guild = generate()
 
-    # #Print all generated Guild members
-    # for member in guild:
-    #     print(str(guild[member]))
+    #Print all generated Guild members
+    for member in guild:
+        print(str(guild[member]))
 
-    # #Prompt user to create a quest object, add it to questBoard
+    #Prompt user to create a quest object, add it to questBoard
     # title, _type, diff, size = QuestCreator.create_quest()
     # questBoard[title] = QuestCreator.Quest(title, _type, diff, size)
 
-    # #Print all quests on questBoard
+    #Print all quests on questBoard
     # for post in questBoard:
     #     print(questBoard[post])

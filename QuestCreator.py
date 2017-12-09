@@ -69,6 +69,7 @@ def create_quest():
 			break
 		else:
 			print("\nInvalid input. Type y or n.\n")
+			final = input()
 			# Try to restart the difficulty selection; atm this is an infinite loop
 
 
