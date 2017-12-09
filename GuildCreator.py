@@ -58,28 +58,29 @@ def set_skills(level):
         attack_percentage = random.randrange(60, 81) / 100
         attack = int(skill_points * attack_percentage)
 
-        speed = random.randrange(0, skill_points - attack)
-        defense = skill_points - attack - defense + 1
+        speed = random.randrange(1, skill_points - attack)
+        defense = skill_points - attack - speed
 
     elif random_num > .33 and random_num <= .66:
         player_type = "Defender"
         defense_percentage = random.randrange(60, 81) / 100
         defense = int(skill_points * defense_percentage)
 
-        attack = random.randrange(0, skill_points - defense)
-        speed = skill_points - attack - defense + 1
+        attack = random.randrange(1, skill_points - defense)
+        speed = skill_points - attack - defense
 
     else:
         player_type = "Runner"
         speed_percentage = random.randrange(60, 81) / 100
         speed = int(skill_points * speed_percentage)
 
-        attack = random.randrange(0, skill_points - speed)
-        defense = skill_points - attack - defense + 1
+        attack = random.randrange(1, skill_points - speed)
+        defense = skill_points - attack - speed
     
+    stats.append(player_type)
     stats.append(attack)
     stats.append(defense)
-    stats.append(speed) 
+    stats.append(speed)
 
     return stats 
 
@@ -89,11 +90,10 @@ def generate():
     for i in range(1, guild_size + 1):
         player_name = "P" + str(i)
         player_level = random.randrange(1,51) #50 is max level for this
-        attack, defense, speed = set_skills(player_level)
+        player_type, attack, defense, speed = set_skills(player_level)
 
-        members[player_name] = Member(player_name, player_level, attack, defense, speed)
+        members[player_name] = Member(player_name, player_level, player_type, attack, defense, speed)
     return members
-
 
 # To test this file
 if __name__ == "__main__":
