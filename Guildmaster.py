@@ -138,18 +138,18 @@ def grade(population, quest):
 
 # *** Selects pairs of parties with the most suitable members (good grade)
 def selection(population, quest, grade):
-  parent_pairs = []
+  selected_parents = []
   for party in population:
     if fitness(party, quest) >= grade:
       print("The selected party fitness is: {}" .format(fitness(party, quest)))
-      parent_pairs.append(party)
+      selected_parents.append(party)
   print('\n')
 
-  return parent_pairs
+  return selected_parents
 
 
 # *** Takes the best members from either parent party to form a new party
-def crossover(parents):
+def crossover(parent_pair):
   child_party = {}
 
   return mutate(child_party)
