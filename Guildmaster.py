@@ -52,7 +52,6 @@ def individual(guild, quest):
 
   # randomly choose party size <= specified max size 
   party_size = randint(1, quest.size)   
-  print("\nThe party size will be: ", party_size)
 
   # randomly assign a valid guild member to the party
   x = 0
@@ -127,17 +126,40 @@ def fitness(party, quest):
     return SucessRate
 
 
-# *** Selects the parties with the most suitable members
-def selection(population):
-  parents = []
-  
+# *** Find average success rate among all party compositions (used for comparison)
+def grade(population, quest):
+  total_fitness = 0
+  for party in population:
+    # print("The party fitness is: {}" .format(fitness(party, quest)))
+    total_fitness += fitness(party, quest)
 
-  return parents
+  return total_fitness / len(population)
 
-# *** Find average success rate for all party compositions (used for comparison)
-# def grade(population, target):
 
-#     return avg
+# *** Selects pairs of parties with the most suitable members (good grade)
+def selection(population, quest, grade):
+  parent_pairs = []
+  for party in population:
+    if fitness(party, quest) >= grade:
+      print("The selected party fitness is: {}" .format(fitness(party, quest)))
+      parent_pairs.append(party)
+  print('\n')
+
+  return parent_pairs
+
+
+# *** Takes the best members from either parent party to form a new party
+def crossover(parents):
+  child_party = {}
+
+  return mutate(child_party)
+
+
+# *** Switch some party member(s) around for possibly better results
+def mutate(child_party):
+  mutated_party = {}
+
+  return mutated_party
     
 
 # *** Bulk of the genetic algorithm
@@ -154,7 +176,8 @@ def selection(population):
 #     return parents
 
 
-# *** Main function 
+
+# *** Main function (for testing; will possibly migrate to evolve())
 if __name__ == "__main__":
 
   # Builds the guild with random guild members of varying stats
@@ -168,13 +191,28 @@ if __name__ == "__main__":
   # Creates the population of possible parties for the quest
   pop_count = 100
   party_pool = population(guild, questBoard[title], pop_count)
-  i = 1
-  for party in party_pool:
-    print("Party {}: " .format(i))
-    for member in party:
-      print(str(party[member]))
-    print('\n')
-    i += 1
+  # i = 1
+  # for party in party_pool:
+  #   print("Party {}: " .format(i))
+  #   for member in party:
+  #     print(str(party[member]))
+  #   print('\n')
+  #   i += 1
+
+  # Finds the average success rate for the quest among all parties
+  avg_fitness = grade(party_pool, questBoard[title])
+  print("\nThe average party fitness is: {}\n" .format(avg_fitness))
+  
+  # Selects parties if they are at or above the average success rate
+  parent_parties = selection(party_pool, questBoard[title], avg_fitness)
+  # i = 1
+  # for party in parent_parties:
+  #   for member in party:
+  #     print(str(party[member]))
+  #   print('\n')
+  #   i += 1
+  print("The number of eligible parties to crossover is: {}" \
+        .format(len(parent_parties)))
 
 
   # Runs the genetic algorithm until a suitable party is made for each quest
