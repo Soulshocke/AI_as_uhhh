@@ -16,14 +16,15 @@ class Member(object):
     def __init__(self, name, level, _type, attack, defense, speed):
         self.name = name
         self.level = level
-        self.type = _type
+        self._type = _type
         self.attack = attack
         self.defense = defense
         self.speed = speed
 
     #string representation
     def __str__(self):
-        to_string = "Name: %s \t Level: %02.0d \t attack: %02.0f \t Defense: %02.0f \t Speed: %02.0f" % (self.name, self.level, self.attack, self.defense, self.speed) 
+        to_string = "Name: %s\t Level: %02.0d\t Type: %s \t ATK: %02.0f\t DEF: %02.0f\t SPD: %02.0f" %\
+                    (self.name, self.level, self._type, self.attack, self.defense, self.speed) 
         return to_string
 
 """set_skills() notes:
@@ -102,14 +103,14 @@ def generate():
     return members
 
 # To test this file
-if __name__ == "__main__":
+# if __name__ == "__main__":
 
-    questBoard = {}
-    guild = generate()
+    # questBoard = {}
+    # guild = generate()
 
     #Print all generated Guild members
-    for member in guild:
-        print(str(guild[member]))
+    # for member in guild:
+    #     print(str(guild[member]))
 
     #Prompt user to create a quest object, add it to questBoard
     # title, _type, diff, size = QuestCreator.create_quest()
