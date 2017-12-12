@@ -149,16 +149,21 @@ def selection(population, quest, grade):
 
 
 # *** Takes the best members from either parent party to form a new party
-def crossover(parent_pair):
+def crossover(parent_pair, guild):
   child_party = {}
 
-  return mutate(child_party)
+  return mutate(child_party, guild)
 
 
 # *** Switch some party member(s) around for possibly better results
-def mutate(child_party):
+def mutate(child_party, guild):
   mutated_party = {}
-
+  new_member = choice(list(guild))
+  while(some_member in child_party)
+  	new_member = choice(list(guild))
+  some_member = choice(list(child_party))
+  del child_party[some_member]
+  child_party[new_member] = guild[new_member]
   return mutated_party
     
 
