@@ -156,7 +156,7 @@ def crossover(Parent1,Parent2,target):
   #Then while the size of the party is bigger than the Parent
   #For loop to get rid of the smallest elments
   child_party = {**Parent1,**Parent2}
-  while len(child_party) > len(Parent1):
+  while len(child_party) > target.size:
       dict1 = {next(iter(child_party)):child_party[(next(iter(child_party)))]}
       min_fitness =  fitness(dict1, target)
       min = next(iter(child_party))
