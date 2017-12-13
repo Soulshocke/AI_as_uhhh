@@ -149,9 +149,29 @@ def selection(population, quest, grade):
 
 
 # *** Takes the best members from either parent party to form a new party
-def crossover(parent_pair):
+def crossover(Parent1,Parent2,target):
   child_party = {}
-
+  #For loop of one parent in another
+  #Add all items to Child
+  #Then while the size of the party is bigger than the Parent
+  #For loop to get rid of the smallest elments
+  child_party = {**Parent1,**Parent2}
+  while len(child_party) > len(Parent1):
+      min = None
+      for member in child_party:
+        for member2 in child_party:
+          if fitness(child_party[member], target)>= fitness(child_party[member2], target):
+            break
+          if fitness(child_party[member], target) <  fitness(child_party[member2], target):
+            min = member
+        del child_party[min]
+  
+  if fitness(Parent1,target) >= fitness(Parent2,target)
+    #I dont know the code for delete
+    #Deletes the Parent with the lowest success rate
+  else 
+    #Delete Parent2
+            
   return mutate(child_party)
 
 
