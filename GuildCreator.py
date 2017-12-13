@@ -135,7 +135,7 @@ def name_generator(names):
 def generate():
     members = {}
     for i in range(1, guild_size + 1):
-        playerID = "P" + str(i)
+        player_ID = "P" + str(i)
         player_name = name_generator(names)
         player_level = random.randint(5,50) #50 is max level for this
         player_type, attack, defense, speed = set_skills(player_level)
@@ -143,7 +143,7 @@ def generate():
         # print("         {0}, {1}, {2}, {3}" \
         #     .format(player_type, attack, defense, speed))
 
-        members[player_name] = Member(player_name, player_level, player_type, attack, defense, speed)
+        members[player_ID] = Member(player_name, player_level, player_type, attack, defense, speed)
     return members
 
 # To test this file
