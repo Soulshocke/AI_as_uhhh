@@ -5,6 +5,10 @@ import QuestCreator
 #just a random size for the guild; I picked 100
 guild_size = 100
 
+#I chose random orc names to input for the names list. I simply generated a list online and manually and input them.
+names = ["Maton", "Hardurosh", "Lamthak", "Kelum", "Sorgargor", "Zavtarram", \
+ "Dradran", "Borus", "Kruban", "Mokdurgron", "Hurdurguld", "Ukogus", "Samfur"]
+
 """Member class notes: 
 The class comes with a constructor which includes a 
 player name, level, attack, defense, and speed. The 
@@ -14,9 +18,9 @@ class Member(object):
 
     #Constructor
     def __init__(self, name, level, _type, attack, defense, speed):
-        self.name = name
+        self.name = name.ljust(15)
         self.level = level
-        self._type = _type
+        self._type = _type.ljust(8) 
         self.attack = attack
         self.defense = defense
         self.speed = speed
@@ -87,12 +91,52 @@ def set_skills(level):
 
     return stats 
 
+def name_generator(names):
+	random_num = random.randint(1, 10)
+	new_name = ""
+
+	if random_num == 1:
+		return random.choice(names)
+
+	elif random_num >= 2 and random_num <= 9:
+		first_name = random.choice(names)
+		second_name = random.choice(names)
+		while new_name in names or new_name == "":
+			random_num = random.randint(1,10)
+
+			if random_num <= 5:
+				random_num = random.randint(1,10)
+
+				if random_num <= 5:
+					new_name = first_name[ :int(len(first_name)/2)] + second_name[int(len(second_name)/2): ]
+				else:
+					new_name = first_name[int(len(first_name)/2): ] + second_name[ :int(len(second_name)/2)]
+			else:
+				random_num = random.randint(1,10)
+
+				if random_num <= 5:
+					new_name = second_name[ :int(len(second_name)/2)] + first_name[int(len(first_name)/2): ]
+				else:
+					new_name = second_name[int(len(second_name)/2): ] + first_name[ :int(len(first_name)/2)]
+	else:
+		new_name = random.choice(names)
+		new_name = new_name[::-1]
+		while(new_name in names):
+			new_name = random.choice(names)
+			new_name = new_name[::-1]
+
+	new_name = new_name.lower().capitalize()
+	if new_name not in names:
+		names.append(new_name)
+	return new_name
+
 #Generate just creates the entire guild using set_skills()
 # *** [Debug note] Switched randrange with randint ***
 def generate():
     members = {}
     for i in range(1, guild_size + 1):
-        player_name = "P" + str(i)
+        playerID = "P" + str(i)
+        player_name = name_generator(names)
         player_level = random.randint(5,50) #50 is max level for this
         player_type, attack, defense, speed = set_skills(player_level)
         # print("i = {0}: " .format(i))
