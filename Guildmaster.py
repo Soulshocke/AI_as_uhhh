@@ -149,7 +149,7 @@ def selection(population, quest, grade):
 
 
 # *** Takes the best members from either parent party to form a new party
-def crossover(Parent1,Parent2,target):
+def crossover(Parent1,Parent2, target):
   child_party = {}
   #For loop of one parent in another
   #Add all items to Child
@@ -167,6 +167,7 @@ def crossover(Parent1,Parent2,target):
            min = member
       del child_party[min]
             
+  # mutate some parties by replacing random party members          
   return mutate(child_party)
 
 
@@ -190,7 +191,7 @@ def mutate(child_party, guild):
 
 # *** Bulk of the genetic algorithm; finds best party out of all choices
 def evolve(pop_count, guild, quest):
-  crossed = []
+  new_population = []
 
   party_pool = population(guild, quest, pop_count)
   avg_fitness = grade(party_pool, quest)
@@ -199,23 +200,18 @@ def evolve(pop_count, guild, quest):
   while(parent_parties):
     parent_1 = choice(parent_parties)
     parent_parties.remove(parent_1)     #ensures 2nd parent isn't the same
-    crossed.append(parent_1)            #similar to a "visited" set
+    new_population.append(parent_1)            
 
     parent_2 = choice(parent_parties)
     parent_parties.remove(parent_2)
-    crossed.append(parent_2)
+    new_population.append(parent_2)
 
-
-
-
-
-    # randomly add other parties to promote genetic diversity
-
-            
-    # mutate some parties by replacing random party members
-
-    
     # crossover two (parent) parties to create a better (child) party composition
+    new_population.append(crossover(parent_1, parent_2, quest))
+
+    # randomly add other parties to promote genetic diversity (pending)
+
+    best_party = choice(new_population)
 
     return best_party
 
