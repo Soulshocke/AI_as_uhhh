@@ -65,7 +65,7 @@ def create_quest():
 				print("\nPlease pick a number between 1 - 5\n")
 				diff_in = input()
 				diff = int(diff_in)
-			diff = random.randrange((diff - 1) * 20, diff * 20)
+			diff = random.randrange(((diff - 1) * 20) + 1 , diff * 20)
 			break
 		else:
 			print("\nInvalid input. Type y or n.\n")
