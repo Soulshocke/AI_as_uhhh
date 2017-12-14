@@ -217,7 +217,7 @@ def evolve(pop_count, guild, quest):
 
 
 # *** Main function (for testing; will possibly migrate to evolve())
-if __name__ == "__main__":
+#if __name__ == "__main__":
 
   # # # Builds the guild with random guild members of varying stats
   # guild = GuildCreator.generate()
