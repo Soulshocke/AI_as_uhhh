@@ -149,78 +149,127 @@ def selection(population, quest, grade):
 
 
 # *** Takes the best members from either parent party to form a new party
-def crossover(parent_pair, guild):
+def crossover(Parent1,Parent2):
   child_party = {}
+  #For loop of one parent in another
+  #Add all items to Child
+  #Then while the size of the party is bigger than the Parent
+  #For loop to get rid of the smallest elments
+  child_party = {**Parent1,**Parent2}
+  while len(child_party) > target.size:
+      dict1 = {next(iter(child_party)):child_party[(next(iter(child_party)))]}
+      min_fitness =  fitness(dict1, target)
+      min = next(iter(child_party))
+      for member in child_party:
+        dict2={member:child_party[member]}
+        if min_fitness >= fitness(dict2, target):
+           min_fitness = fitness(dict2, target)
+           min = member
+      del child_party[min]
+            
+  return mutate(child_party)
 
-  return mutate(child_party, guild)
 
 
 # *** Switch some party member(s) around for possibly better results
 def mutate(child_party, guild):
-  mutated_party = {}
+  # mutated_party = {}
   new_member = choice(list(guild))
-  while(some_member in child_party)
-  	new_member = choice(list(guild))
+
+  # ensures new_member isn't already in child_party
+  while(new_member in child_party):
+    new_member = choice(list(guild))
+
+  # replaces a random original member with another outside the party
   some_member = choice(list(child_party))
   del child_party[some_member]
   child_party[new_member] = guild[new_member]
-  return mutated_party
+
+  return child_party  # this is now a mutated child
     
 
-# *** Bulk of the genetic algorithm
-# def evolve(population, target, ):
+# *** Bulk of the genetic algorithm; finds best party out of all choices
+def evolve(pop_count, guild, quest):
+  crossed = []
 
-#     # randomly add other parties to promote genetic diversity
+  party_pool = population(guild, quest, pop_count)
+  avg_fitness = grade(party_pool, quest)
+  parent_parties = selection(party_pool, quest, avg_fitness)
+
+  while(parent_parties):
+    parent_1 = choice(parent_parties)
+    parent_parties.remove(parent_1)     #ensures 2nd parent isn't the same
+    crossed.append(parent_1)            #similar to a "visited" set
+
+    parent_2 = choice(parent_parties)
+    parent_parties.remove(parent_2)
+    crossed.append(parent_2)
+
+
+
+
+
+    # randomly add other parties to promote genetic diversity
 
             
-#     # mutate some parties by replacing random party members
+    # mutate some parties by replacing random party members
 
     
-#     # crossover two (parent) parties to create a better (child) party composition
+    # crossover two (parent) parties to create a better (child) party composition
 
-#     return parents
+    return best_party
 
 
 
 # *** Main function (for testing; will possibly migrate to evolve())
 if __name__ == "__main__":
 
-  # Builds the guild with random guild members of varying stats
-  guild = GuildCreator.generate()
+  # # # Builds the guild with random guild members of varying stats
+  # guild = GuildCreator.generate()
 
-  # Creates the quest for which a party will be assembled for
-  questBoard = {}
-  title, _type, diff, size = QuestCreator.create_quest()
-  questBoard[title] = QuestCreator.Quest(title, _type, diff, size)
+  # # # Creates the quest for which a party will be assembled for
+  # questBoard = {}
+  # title, _type, diff, size = QuestCreator.create_quest()
+  # questBoard[title] = QuestCreator.Quest(title, _type, diff, size)
 
-  # Creates the population of possible parties for the quest
-  pop_count = 100
-  party_pool = population(guild, questBoard[title], pop_count)
-  # i = 1
-  # for party in party_pool:
-  #   print("Party {}: " .format(i))
-  #   for member in party:
-  #     print(str(party[member]))
-  #   print('\n')
-  #   i += 1
+  # # Creates the population of possible parties for the quest
+  # pop_count = 100
+  # party_pool = population(guild, questBoard[title], pop_count)
+  # # i = 1
+  # # for party in party_pool:
+  # #   print("Party {}: " .format(i))
+  # #   for member in party:
+  # #     print(str(party[member]))
+  # #   print('\n')
+  # #   i += 1
 
-  # Finds the average success rate for the quest among all parties
-  avg_fitness = grade(party_pool, questBoard[title])
-  print("\nThe average party fitness is: {}\n" .format(avg_fitness))
+  # # Finds the average success rate for the quest among all parties
+  # avg_fitness = grade(party_pool, questBoard[title])
+  # print("\nThe average party fitness is: {}\n" .format(avg_fitness))
   
-  # Selects parties if they are at or above the average success rate
-  parent_parties = selection(party_pool, questBoard[title], avg_fitness)
-  # i = 1
-  # for party in parent_parties:
-  #   for member in party:
-  #     print(str(party[member]))
-  #   print('\n')
-  #   i += 1
-  print("The number of eligible parties to crossover is: {}" \
-        .format(len(parent_parties)))
+  # # Selects parties if they are at or above the average success rate
+  # parent_parties = selection(party_pool, questBoard[title], avg_fitness)
+  # # for party in parent_parties:
+  # #   for member in party:
+  # #     print(str(party[member]))
+  # #   print('\n')
+  # print("The number of eligible parties to crossover is: {}" \
+  #       .format(len(parent_parties)))
+
+  # # Tests whether mutate() works
+  # mutated_parties = []
+  # for parent in parent_parties:
+  #   mutated_parties.append(mutate(parent, guild))
+  # # for mutant in mutated_parties:
+  # #   for member in mutant:
+  # #     print(str(mutant[member]))
+  # #   print('\n')
+
+  # # Creates new parties from existing parent parties
 
 
-  # Runs the genetic algorithm until a suitable party is made for each quest
+
+  # # Runs the genetic algorithm until a suitable party is made for each quest
   # for quest in questBoard:
   #     final_gen = sorted(evolve(guild, questBoard[quest]), key=Individual.fitness, reverse=True)
   #     best_party = final_gen[0]
