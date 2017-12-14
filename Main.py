@@ -1,6 +1,6 @@
 import GuildCreator
 import QuestCreator
-from Guildmaster import individual as party_create
+from Guildmaster import evolve
 from Guildmaster import fitness as PartySuccess
 import random
 
@@ -113,9 +113,6 @@ while UserInput != 5:
           print("\nAlright see you tommorow Traveler")
           print("I will now send the best people for your quest")
           #*****AI is called here (below only works for one quest atm)
-          for Quest in questBoard:
-            Quest1_Party = party_create(guild, questBoard[Quest])
-
           #Report of who is sent
           #Find Best party for each quest
           for Quest in questBoard:
