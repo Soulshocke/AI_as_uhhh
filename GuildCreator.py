@@ -18,9 +18,9 @@ class Member(object):
 
     #Constructor
     def __init__(self, name, level, _type, attack, defense, speed):
-        self.name = name.ljust(15)
+        self.name = name
         self.level = level
-        self._type = _type.ljust(8) 
+        self._type = _type
         self.attack = attack
         self.defense = defense
         self.speed = speed
@@ -28,7 +28,7 @@ class Member(object):
     #string representation
     def __str__(self):
         to_string = "Name: %s\t Level: %02.0d\t Type: %s \t ATK: %02.0f\t DEF: %02.0f\t SPD: %02.0f" %\
-                    (self.name, self.level, self._type, self.attack, self.defense, self.speed) 
+                    (self.name.ljust(15), self.level, self._type.ljust(8), self.attack, self.defense, self.speed) 
         return to_string
 
 """set_skills() notes:
