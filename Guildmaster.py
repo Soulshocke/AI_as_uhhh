@@ -149,26 +149,25 @@ def selection(population, quest, grade):
 
 
 # *** Takes the best members from either parent party to form a new party
-def crossover(Parent1,Parent2, target):
+def crossover(Parent1, Parent2, quest, guild):
   child_party = {}
   #For loop of one parent in another
   #Add all items to Child
   #Then while the size of the party is bigger than the Parent
   #For loop to get rid of the smallest elments
   child_party = {**Parent1,**Parent2}
-  while len(child_party) > target.size:
+  while len(child_party) > quest.size:
       dict1 = {next(iter(child_party)):child_party[(next(iter(child_party)))]}
-      min_fitness =  fitness(dict1, target)
+      min_fitness =  fitness(dict1, quest)
       min = next(iter(child_party))
       for member in child_party:
         dict2={member:child_party[member]}
-        if min_fitness >= fitness(dict2, target):
-           min_fitness = fitness(dict2, target)
+        if min_fitness >= fitness(dict2, quest):
+           min_fitness = fitness(dict2, quest)
            min = member
       del child_party[min]
-            
-  # mutate some parties by replacing random party members          
-  return mutate(child_party)
+              # mutate some parties by replacing random party members          
+  return mutate(child_party, guild)
 
 
 
@@ -207,7 +206,7 @@ def evolve(pop_count, guild, quest):
     new_population.append(parent_2)
 
     # crossover two (parent) parties to create a better (child) party composition
-    new_population.append(crossover(parent_1, parent_2, quest))
+    new_population.append(crossover(parent_1, parent_2, quest, guild))
 
     # randomly add other parties to promote genetic diversity (pending)
 
