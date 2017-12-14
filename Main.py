@@ -117,7 +117,9 @@ while UserInput != 5:
             Quest1_Party = party_create(guild, questBoard[Quest])
 
           #Report of who is sent
-          
+          #Find Best party for each quest
+          for Quest in questBoard:
+              Quest1_Party = evolve(100, guild, questBoard[Quest])
           #Test Party
           # Quest1_Party['ayy'] = GuildCreator.Member('ayy', 12, 6, 3, 15)
           # Quest1_Party['lmao'] = GuildCreator.Member('lmao', 14,7, 1, 20)
@@ -141,6 +143,7 @@ while UserInput != 5:
           #Clears QuestBoard
           Quest1_Party = {}
           questBoard = {}
+       
        else:
          print("\nThe day can't end Traveler if we have no Quests on the Board\n")  
     
