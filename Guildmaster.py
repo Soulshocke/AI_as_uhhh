@@ -149,7 +149,7 @@ def selection(population, quest, grade):
 
 
 # *** Takes the best members from either parent party to form a new party
-def crossover(Parent1,Parent2):
+def crossover(Parent1,Parent2,target):
   child_party = {}
   #For loop of one parent in another
   #Add all items to Child
